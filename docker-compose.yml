@@ -1,6 +1,6 @@
 ---
 server:
-  image: "iidlx/hanlonjson"
+  image: "iidlx/hanlon"
   ports: 
     - 8026:8026
     - 69:69/udp
