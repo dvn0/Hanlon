@@ -1,0 +1,27 @@
+{
+  "@uuid": "7m41tapZdIUaqOZJGDlt2I",
+  "@version": 1,
+  "@classname": "ProjectHanlon::ImageService::MicroKernel",
+  "@is_template": false,
+  "@noun": "image",
+  "@path_prefix": "mk",
+  "@description": "MicroKernel Image",
+  "@hidden": false,
+  "@ssh_key": null,
+  "@mk_password": "test1234",
+  "@filename": "rancher-0.7.0.iso",
+  "@mount_method": "mount",
+  "@verification_hash": "4bbc0acc9218d035ed9a17001c7ac33dcc0dfc868f221cf2ad9db4eb94f744d5",
+  "@isolinux_cfg": {
+    "default": "rancheros",
+    "label": "rancheros",
+    "kernel": "/boot/vmlinuz",
+    "initrd": "/boot/initrd",
+    "append": "quiet rancher.autologin=tty1 rancher.autologin=ttyS0"
+  },
+  "@os_version": "3.0.1",
+  "@kernel_hash": "2814df94c40746dc121d9f9b307291266f9fb5c3d434fe0375b5e6b52b0153f1",
+  "@initrd_hash": "5e7d555842c09d81f880368981b803347f2e7a5584813aa69a74ce9adac17a22",
+  "@docker_image": "mk-image.tar",
+  "@image_build_time": 1480034513
+}
