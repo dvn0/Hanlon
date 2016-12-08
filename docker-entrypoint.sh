@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+mkdir -p /etc/chef
+openssl genrsa -out /etc/chef/client.pem
+chef-zero -H 0.0.0.0 &
+echo test
+
 export HANLONIPADDR="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
 
 /bin/bash -c "cat <<EOF>>/etc/hosts
