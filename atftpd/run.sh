@@ -12,4 +12,4 @@ fi
 
 chmod -R 700 /tftpboot
 chown -R nobody:nogroup /tftpboot/
-/usr/sbin/atftpd --user nobody.nogroup --daemon --no-fork --port 69 --logfile /dev/stdout /tftpboot
+/usr/sbin/atftpd --verbose 1 --user nobody.nogroup --daemon --no-fork --port 69 --logfile /dev/stdout /tftpboot

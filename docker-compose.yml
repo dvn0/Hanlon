@@ -1,11 +1,14 @@
 ---
-server:
-  image: "iidlx/hanlonjson"
-  ports: 
-    - 8026:8026
-    - 69:69/udp
-  privileged: true
-  env_file: hanlon.env
+version: '2'
+
+services:
+  server:
+    image: "iidlx/hanlon"
+    privileged: true
+    env_file: hanlon.env
+    network_mode: host
+    volumes:
+      - ./chefdata:/home/hanlon/chef 
 #  environment:
 #    DOCKER_HOST: "${DOCKER_HOST}"
 #    HANLON_SUBNETS: "${HANLON_SUBNETS}"

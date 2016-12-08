@@ -1,0 +1,38 @@
+{
+  "convergence_options": {
+    "chef_server": {
+      "chef_server_url": "http://127.0.0.1:8889",
+      "options": {
+        "client_name": "stickywicket",
+        "signing_key_filename": "/etc/chef/client.pem",
+        "api_version": "0"
+      }
+    },
+    "allow_overwrite_keys": null,
+    "source_key": null,
+    "source_key_path": null,
+    "source_key_pass_phrase": null,
+    "private_key_options": null,
+    "ohai_hints": null,
+    "public_key_path": null,
+    "public_key_format": null,
+    "admin": null,
+    "validator": null,
+    "chef_config": null
+  },
+  "ssh_timeout": 600,
+  "transport_options": {
+    "ip_address": "192.168.1.170",
+    "username": "core",
+    "ssh_options": {
+      "user_known_hosts_file": "/var/chef/cache/known_hosts",
+      "keys": [
+        "/var/chef/cache/provisioning.pem"
+      ]
+    },
+    "host": "192.168.1.170",
+    "options": {
+      "prefix": "sudo "
+    }
+  }
+}

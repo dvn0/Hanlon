@@ -2,7 +2,7 @@
 #
 # VERSION 3.0.1
 
-FROM iidlx/ruby:2.2
+FROM ruby:2.2
 MAINTAINER Joseph Callen <jcpowermac@gmail.com>
 
 #AFTPD
@@ -105,6 +105,9 @@ ADD supervisor.conf /etc/supervisor.conf
 ADD atftpd/atftpd.sv.conf /etc/supervisor/conf.d/
 ADD hanlon.sv.conf /etc/supervisor/conf.d/ 
 ADD dnsmasq/dnsmasq.sv.conf /etc/supervisor/conf.d/
+
+RUN cd /home/hanlon/chef \
+	&& bundle install
 
 # default command
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]

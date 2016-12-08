@@ -1,0 +1,1 @@
+ipmitool -I lanplus -U admin -P P@ssw0rd -H 192.168.1.200 power on ; ipmitool -I lanplus -U admin -P P@ssw0rd -H 192.168.1.201 power on ; ipmitool -I lanplus -U admin -P P@ssw0rd -H 192.168.1.202 power on

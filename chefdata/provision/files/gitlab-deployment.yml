@@ -1,0 +1,103 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: gitlab
+        app: gitlab
+    spec:
+      containers:
+      - name: gitlab
+        image: gitlab/gitlab-ce:latest 
+        imagePullPolicy: Always
+        env:
+      VIRTUAL_HOST: gitlab.ii.org.nz,docker.ii.org.nz
+      LETSENCRYPT_HOST: gitlab.ii.org.nz,docker.ii.org.nz
+      LETSENCRYPT_EMAIL: support@ii.org.nz
+      VIRTUAL_PORT: 443
+      VIRTUAL_PROTO: https
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.ii.org.nz'
+        gitlab_rails['gitlab_shell_ssh_port'] = 22
+        gitlab_rails['omniauth_providers'] = [
+          {
+            "name" => "github",
+            "app_id" => "fad327595b1c5b774742",
+            "app_secret" => "45b11a77222ecb24f2268bc6676d62307817302b",
+            "url" => "https://github.com/",
+            "args" => { "scope" => "user:email" }
+          },
+          {
+            "name" => "google_oauth2",
+            "app_id" => "1094830559476-vk1aql62e5hhik72ukvf89gkkmllkse4.apps.googleusercontent.com",
+            "app_secret" => "U0vgMD83G4hp26JL-WH_PEar",
+            "args" => { "access_type" => "offline", "approval_prompt" => '' }
+          },
+          {
+            "name" => "facebook",
+            "app_id" => "278547532527457",
+            "app_secret" => "512df081b85cba684f3dea99d2c2b147"
+          },
+          {
+            "name" => "twitter",
+            "app_id" => "yn8gNJEdvS7Kym9PiWCoDp6zg",
+            "app_secret" => "hHgjhXsRRLl6mDaqMrS5swZ6uu7Sv1QyZVpoNemDyPY9kRpfAM"
+          },
+          {
+            "name" => "gitlab",
+            "app_id" => "4d28652c88f951c356965368dfa1517a9aee6793887e8feea15c2e7343aa8ab6",
+            "app_secret" => "8e6e57e46576d6eabb7a8d137f5df76296309682aec56dea3c1c458a1274e13d",
+            "args" => { "scope" => "api" }
+          }
+        ]
+        gitlab_rails['omniauth_enabled'] = true
+        gitlab_rails['omniauth_allow_single_sign_on'] = ['twitter','github','google_oauth2','gitlab','facebook']
+        gitlab_rails['omniauth_block_auto_created_users'] = false
+        # GitLab Email Server Configuration
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = "smtp.gmail.com"
+        gitlab_rails['smtp_port'] = 587
+        gitlab_rails['smtp_user_name'] = "smtp@hippiehacker.org"
+        gitlab_rails['smtp_password'] = "73%b%8AX"
+        gitlab_rails['smtp_domain'] = "smtp.gmail.com"
+        gitlab_rails['smtp_authentication'] = "login"
+        gitlab_rails['smtp_enable_starttls_auto'] = true
+        gitlab_rails['smtp_tls'] = false
+        gitlab_rails['smtp_openssl_verify_mode'] = 'peer' # Can be: 'none', 'peer', 'client_once', 'fail_if_no_peer_cert', see http://api.rubyonrails.org/classes/ActionMailer/Base.html
+        # Additional SMTP Settings
+        gitlab_rails['gitlab_email_from'] = 'gitlab@ii.org.nz'
+        gitlab_rails['gitlab_email_reply_to'] = 'gitlab@ii.org.nz'
+        gitlab_rails['gitlab_email_enabled'] = true
+        gitlab_rails['gitlab_email_display_name'] = 'iiGitLab'
+        # Docker Registry
+        registry_external_url 'https://docker.ii.org.nz:443'
+        gitlab_rails['registry_enabled'] = true
+
+       ports:
+        - name: http
+          containerPort: 80
+        - name: ssh
+          containerPort: 22
+        volumeMounts:
+        - mountPath: /home/git/data
+          name: data
+        livenessProbe:
+          httpGet:
+            path: /users/sign_in
+            port: 80
+          initialDelaySeconds: 180
+          timeoutSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /users/sign_in
+            port: 80
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+      volumes:
+      - name: data
+        emptyDir: {}

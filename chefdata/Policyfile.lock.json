@@ -1,0 +1,48 @@
+{
+  "revision_id": "854141c17bb8d07e5817bd18cb20c9b77a3870f32c1a543c5a61b30478a18ac1",
+  "name": "resin",
+  "run_list": [
+    "recipe[resin::default]"
+  ],
+  "cookbook_locks": {
+    "resin": {
+      "version": "0.1.0",
+      "identifier": "fd66cc22c5d961f835767045570dedcf10679f0f",
+      "dotted_decimal_identifier": "71326196050549089.69864577030248205.261473589239567",
+      "source": "resin",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "6ed7e9affab893226c66605ea014a30aa620ce62",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "resin"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "resin",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "resin (0.1.0)": [
+
+      ]
+    }
+  }
+}
