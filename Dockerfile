@@ -102,10 +102,11 @@ EXPOSE 69/udp
 
 # Chef
 RUN gem install chef-zero
+RUN gem install chef-dk
 RUN chmod +x /home/hanlon/Chef/entrypoint.sh
 #RUN git clone -b resin https://gitlab.ii.org.nz/iichip/chef-provisioning-k8s.git /home/hanlon/Chef/chef-provisioning-k8s
 RUN gem install bundle \
-        cd /home/hanlon/Chef/chef-provisioning-k8s \
+        cd /home/hanlon/chef-provisioning-k8s \
         && bundle install --system
 
 # supervisor base configuration
