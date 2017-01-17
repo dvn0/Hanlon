@@ -93,6 +93,7 @@ ENV HANLON_WEB_PATH /home/hanlon/web
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
+RUN chmod +x /chef-provision-k8s.sh
 
 WORKDIR /home/hanlon
 
@@ -114,6 +115,7 @@ ADD atftpd/atftpd.sv.conf /etc/supervisor/conf.d/
 ADD hanlon.sv.conf /etc/supervisor/conf.d/ 
 ADD dnsmasq/dnsmasq.sv.conf /etc/supervisor/conf.d/
 ADD Chef/chef.sv.conf /etc/supervisor/conf.d/
+ADD chef-provision.sv.conf /etc/supervisor/conf.d/
 
 # default command
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]
