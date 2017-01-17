@@ -92,8 +92,9 @@ ENV WIMLIB_IMAGEX_USE_UTF8 true
 ENV HANLON_WEB_PATH /home/hanlon/web
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY chef-provisionin-k8s.sh /chef-provisionin-k8s.sh
 RUN chmod +x /docker-entrypoint.sh
-RUN chmod +x /home/hanlon/chef-provision-k8s.sh
+RUN chmod +x /chef-provision-k8s.sh
 
 WORKDIR /home/hanlon
 
