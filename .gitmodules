@@ -10,3 +10,7 @@
 	path = coreos
 	url = git@gitlab.ii.org.nz:iichip/coreos.git
 	branch = coreos
+[submodule "Chef"]
+	path = Chef
+	url = git@gitlab.ii.org.nz:iichip/Chef.git
+	branch = Docker-Hanlon
