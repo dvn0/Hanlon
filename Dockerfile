@@ -116,7 +116,7 @@ ADD atftpd/atftpd.sv.conf /etc/supervisor/conf.d/
 ADD hanlon.sv.conf /etc/supervisor/conf.d/ 
 ADD dnsmasq/dnsmasq.sv.conf /etc/supervisor/conf.d/
 ADD Chef/chef.sv.conf /etc/supervisor/conf.d/
-ADD chef-provision.sv.conf /etc/supervisor/conf.d/
+#ADD chef-provision.sv.conf /etc/supervisor/conf.d/
 
 # default command
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]
