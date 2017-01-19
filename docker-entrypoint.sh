@@ -13,7 +13,13 @@ EOF
 
 elif [ "$PERSIST_MODE" = "@json" ]
 then
-    ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "hanlon_subnets": "'$HANLON_SUBNETS'", "hanlon_server": "'$DOCKER_HOST'", "ipmi_utility": "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
+    if [ -z "$DOCKER_HOST"]
+    then
+        ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "ipmi_utility": "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
+    else
+        ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "hanlon_subnets": "'$HANLON_SUBNETS'", "hanlon_server": "'$DOCKER_HOST'", "ipmi_utility": "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
+    fi
+
 else
     ./hanlon_init -j '{"hanlon_static_path": "'$HANLON_STATIC_PATH'", "hanlon_subnets": "'$HANLON_SUBNETS'", "hanlon_server": "'$DOCKER_HOST'", "persist_host": "'$MONGO_PORT_27017_TCP_ADDR'", "ipmi_utility": "ipmitool"}'
 fi
