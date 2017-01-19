@@ -15,7 +15,7 @@ elif [ "$PERSIST_MODE" = "@json" ]
 then
     if [ -z "$DOCKER_HOST"]
     then
-        ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "ipmi_utility": "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
+        ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "ipmi_utility": "hanlon_subnets": "'$HANLON_SUBNETS'", "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
     else
         ./hanlon_init -j '{"persist_mode": "'$PERSIST_MODE'", "hanlon_static_path": "'$HANLON_STATIC_PATH'", "hanlon_subnets": "'$HANLON_SUBNETS'", "hanlon_server": "'$DOCKER_HOST'", "ipmi_utility": "ipmitool", "ipmi_username": "'$IPMI_USER'", "ipmi_password": "'$IPMI_PASS'"}'
     fi
