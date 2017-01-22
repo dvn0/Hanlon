@@ -106,7 +106,6 @@ EXPOSE 69/udp
 RUN gem install chef-zero
 RUN gem install chef-dk
 RUN chmod +x /home/hanlon/Chef/entrypoint.sh
-RUN sleep 99999
 RUN gem install bundle \
         && cd /home/hanlon/chef-provisioning-k8s \
         && bundle install --system
