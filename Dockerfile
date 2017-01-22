@@ -79,7 +79,7 @@ RUN apt-get update -y \
     	&& apt-get -y clean \
     	&& rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-COPY Chef chef-provisioning-k8s cli core coreos Gemfile Gemfile.lock hanlon.gemspec hanlon_init hanlon.sv.conf ipmi Rakefile scripts test util web /home/hanlon
+COPY Chef chef-provisioning-k8s cli core coreos Gemfile Gemfile.lock hanlon.gemspec hanlon_init hanlon.sv.conf ipmi Rakefile scripts test util web /home/hanlon/
 
 # We don't need gem docs
 RUN echo "install: --no-rdoc --no-ri" > /etc/gemrc
