@@ -79,7 +79,7 @@ RUN apt-get update -y \
     	&& apt-get -y clean \
     	&& rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-COPY . /home/hanlon
+COPY Chef chef-provisioning-k8s cli core coreos Gemfile Gemfile.lock hanlon.gemspec hanlon_init hanlon.sv.conf ipmi Rakefile scripts test util web /home/hanlon
 
 # We don't need gem docs
 RUN echo "install: --no-rdoc --no-ri" > /etc/gemrc
@@ -106,6 +106,7 @@ EXPOSE 69/udp
 RUN gem install chef-zero
 RUN gem install chef-dk
 RUN chmod +x /home/hanlon/Chef/entrypoint.sh
+RUN sleep 99999
 RUN gem install bundle \
         && cd /home/hanlon/chef-provisioning-k8s \
         && bundle install --system
